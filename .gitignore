@@ -1,0 +1,16 @@
+#themesの作成データ以外APP取得不可
+/app/*.php
+/app/*.html
+/app/*.txt
+/app/.htaccess
+/app/readme
+/app/wp-admin/
+/app/wp-includes/
+/app/wp-content/*.php
+/app/wp-content/languages/
+/app/wp-content/plugins/
+/app/wp-content/upgrade/
+/app/wp-content/themes/index.php
+/app/wp-content/themes/twentytwentyone
+/app/wp-content/themes/twentytwentytwo
+/app/wp-content/themes/twentytwentythree

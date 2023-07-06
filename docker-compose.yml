@@ -2,8 +2,8 @@ version: '1'
 services:
 
   #MySQL用コンテナ
-  mysql:
-    container_name: mysql
+  wp-db:
+    container_name: wp-db
     image: mysql:5.7
     volumes:
       - ./mysql:/var/lib/mysq
@@ -16,13 +16,13 @@ services:
       - MYSQL_PASSWORD=test0123
 
   #phpMyAdmin用コンテナ
-  phpmyadmin:
-    container_name: phpMyAdmin
+  wp-phpmyadmin:
+    container_name: wp-phpMyAdmin
     depends_on:
-      - mysql
+      - wp-db
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: wp-db
     restart: always
     ports:
       - "80:80"
@@ -38,9 +38,9 @@ services:
     container_name: app
     restart: always
     environment:
-      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_HOST: wp-db:3306
       WORDPRESS_DB_USER: tester
       WORDPRESS_DB_PASSWORD: test0123
 
 volumes:
-  mysql:
+  wp-db:

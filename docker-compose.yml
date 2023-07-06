@@ -1,0 +1,46 @@
+version: '1'
+services:
+
+  #MySQL用コンテナ
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysq
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=tester
+      - MYSQL_PASSWORD=test0123
+
+  #phpMyAdmin用コンテナ
+  phpmyadmin:
+    container_name: phpMyAdmin
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+    restart: always
+    ports:
+      - "80:80"
+
+  #php用コンテナ
+  #実際Gitで管理する場合、別々のものを使用するか1ブランチにディレクトリで分けるかで実施
+  app:
+    image: wordpress:latest
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - 8000:80
+    container_name: app
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: tester
+      WORDPRESS_DB_PASSWORD: test0123
+
+volumes:
+  mysql:

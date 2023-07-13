@@ -1,0 +1,38 @@
+# WordPressのテーマで使用する各種ファイルをこちらにて管理
+# 各種ファイルにいては下記のような組みわけのものが存在。
+# ファイル内の記述方法にもよるが基本的に名称による優先順位が存在。こちらについては確認を取っておくこと。
+#
+; archive.php	記事一覧のテンプレート。
+; category-slug.php	カテゴリーアーカイブのテンプレート。[同じ[slug]の物が割り当てられる。
+; category.php	カテゴリーアーカイブのテンプレート。
+; taxonomy-slug.php	カテゴリーアーカイブのテンプレート。[同じ[slug]の物が割り当てられる。
+; taxonomy.php	タクソノミーアーカイブのテンプレート。
+; footer.php	フッターのテンプレート。
+; front-page.php	トップページのテンプレート。
+; functions.php	WordPressの機能をカスタマイズするためのテンプレート。
+; header.php	ヘッダーのテンプレート。
+; index.php	テーマに最低限必要な基本テンプレート。404もしくは該当するページがなければすべてindex.phpのページに遷移する。
+; page-slug.php	固定ページのテンプレート。同じ[slug]の物が基本的に割り当てられる。管理側面から別途割り当ても可能。
+; page.php	固定ページのテンプレート。
+; search-list.php	（※当記事オリジナルのテンプレートで、WPの方で特に決まりはありません）サイト内検索（search.php）をしたときに一覧のコンテンツを表示するためのテンプレート。
+; search.php	サイト内検索の検索結果のテンプレート。
+; searchform.php	サイト内検索の検索ボックスのテンプレート。
+; sidebar.php	サイドバーのテンプレート。
+; single-postType.php	カスタム投稿タイプのテンプレート。{sample}の部分はカスタム投稿タイプの名前になります。（当記事では「sample」）
+; single.php	投稿記事のテンプレート。
+; style.css（WP登録用CSS）	WordPressにWordPressのテーマとして使えるようにするためのCSSファイル。
+; tag.php	タグアーカイブのテンプレート。
+
+# 優先順位例一覧
+#
+# 優先順位例(固別投稿):[single-{postType}.php] > [single.php] > [singular.php] > [index.php]
+# 優先順位例(投稿):[archive-{postType}.php] > [archive.php] > [index.php]
+# 優先順位例(固定ページ):[404/home/front-page.php(個別固定のファイル名)] > [page-{slug}.php] > [page.php] > [singular.php] > [index.php]
+# 優先順位例(カテゴリ):[category-{slug}.php] > [category.php] > [archive.php] > [index.php]
+# 優先順位例(タグ):[tag-{slug}.php] > [tag.php] > [archive.php] > [index.php]
+# 優先順位例(タクソノミー):[taxonomy-[taxonomy]-{teram}.php] > [taxsonomy-{taxsonomy}.php] > [taxsonomy.php] > [archive.php] > [index.php]
+
+# 分類の考え方
+#
+# 基本的に枠・構造の大きさによる呼称の違いとなる。
+# 大分類が[taxonomy]となりその下の枠分けに[category(階層構造あり)][tag(階層構造なし)]が存在する。
